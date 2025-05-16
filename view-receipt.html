@@ -5,7 +5,191 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .sidebar.minimized .sidebar-text {
+      display: none;
+    }
+
+    .dropdown-menu {
+      display: none;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+  </style>
   
 </head>
+<body class="flex min-h-screen bg-gray-100">
 
+  
+  <aside id="sidebar" class="sidebar w-64 bg-white shadow-md transition-all duration-300 ease-in-out h-full-screen">
+    <div class="flex items-center justify-between p-4">
+      <h2 class="text-xl font-bold sidebar-text">Parent</h2>
+    </div>
+
+   
+    <div class="flex items-center gap-4 p-4">
+      <img src="https://i.pravatar.cc/80" alt="User" class="w-12 h-12 rounded-full" />
+      <div class="sidebar-text">
+        <p class="font-semibold text-gray-800 relative">Jahmai Destura</p>
+        <p class="text-sm text-gray-500">jahmai@makuapo</p>
+      </div>
+    </div>
+
+    
+    <nav class="mt-4 space-y-2">
+      <div class="flex items-center px-4 ms-1 sidebar-text text-gray-400">
+        <h3>Main Navigation</h3>
+      </div>
+      <a href="parents-dashboard.html" data-page="parents-dashboard.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
+        <span class="material-icons mr-2">dashboard</span>
+        <span class="sidebar-text flex-1">Dashboard</span>
+      </a>
+      <a href="top-up.html" data-page="top-up.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
+        <span class="material-icons mr-2">account_balance_wallet</span>
+        <span class="sidebar-text flex-1">Topup</span>
+      </a>
+      <a href="history.html" data-page="history.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
+        <span class="material-icons mr-2">history</span>
+        <span class="sidebar-text flex-1">History</span>
+      </a>
+    </nav>
+  </aside>
+  
+  <div class="flex-1 flex flex-col">
+    
+    
+    <header class="flex justify-between items-center bg-white px-6 py-4 shadow">
+      <button id="toggleBtn" class="focus:outline-none">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <h1 class="text-xl font-bold">Cashteen</h1>
+      <div class="flex items-center gap-6 relative">
+        
+        <button class="bg-red-600 rounded-full px-6 py-0 font-semibold transition-all duration-300 ease-in-out transform hover:bg-red-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300">
+          <a href="index.html" class="text-white block">Logout</a>
+        </button>
+      
+        
+        <div class="relative">
+          
+          <button id="settingsBtn" class="material-icons mt-1.5 text-gray-600 hover:text-gray-800 focus:outline-none">
+            settings
+          </button>
+      
+          
+          <div id="settingsDropdown" class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg hidden z-50">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Edit Profile</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Change Password</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <main class="bg-gray-100 min-h-screen px-4 py-8">
+      <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md border border-gray-300">
+        <h2 class="text-xl font-bold mb-4 text-center text-gray-800 tracking-wide">Cashteen Transaction Receipt</h2>
+    
+        <div id="topup-receipt" class="hidden">
+          <div class="border-t border-b border-dashed py-4 text-sm text-gray-700 space-y-2">
+            <div class="flex justify-between">
+              <span>Transaction ID:</span>
+              <span class="font-medium">#TXN12345678</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Date:</span>
+              <span>2025-05-05</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Type:</span>
+              <span>Top Up</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Payment Method:</span>
+              <span>RFID</span>
+            </div>
+          </div>
+          <div class="mt-4 text-center text-sm">
+            <p class="uppercase tracking-wide text-gray-600 mb-1">Amount</p>
+            <p class="text-2xl font-bold text-green-600">₱50.00</p>
+            <p class="text-sm text-blue-600 font-medium mt-1">Status: Completed</p>
+          </div>
+        </div>
+    
+        <div id="purchase-receipt" class="hidden">
+          <div class="border-t border-b border-dashed py-4 text-sm text-gray-700 space-y-2">
+            <div class="flex justify-between">
+              <span>Transaction ID:</span>
+              <span class="font-medium">#TXN98765432</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Date:</span>
+              <span>2025-05-03</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Type:</span>
+              <span>Child Purchase</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Merchant:</span>
+              <span>School Canteen</span>
+            </div>
+          </div>
+          <div class="mt-4 text-center text-sm">
+            <p class="uppercase tracking-wide text-gray-600 mb-1">Amount</p>
+            <p class="text-2xl font-bold text-red-600">₱12.50</p>
+            <p class="text-sm text-blue-600 font-medium mt-1">Status: Completed</p>
+          </div>
+        </div>
+
+        <div id="pending-receipt" class="hidden">
+          <div class="border-t border-b border-dashed py-4 text-sm text-gray-700 space-y-2">
+            <div class="flex justify-between">
+              <span>Transaction ID:</span>
+              <span class="font-medium">#TXN55555555</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Date:</span>
+              <span>2025-04-30</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Type:</span>
+              <span>Top Up</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Payment Method:</span>
+              <span>RFID</span>
+            </div>
+          </div>
+          <div class="mt-4 text-center text-sm">
+            <p class="uppercase tracking-wide text-gray-600 mb-1">Amount</p>
+            <p class="text-2xl font-bold text-yellow-600">₱100.00</p>
+            <p class="text-sm text-yellow-600 font-medium mt-1">Status: Pending</p>
+          </div>
+        </div>
+    
+        <div class="mt-6 border-t pt-4 text-xs text-gray-500 text-center">
+          <p>Thank you for using Cashteen!</p>
+          <p>Visit us at <span class="underline">www.cashteen.com</span></p>
+        </div>
+    
+        <div class="mt-6 text-center">
+          <button onclick="history.back()" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 text-sm">
+            Back to History
+          </button>
+        </div>
+      </div>
+    </main>
+    
+    
+      
+      
+
+  </div>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</body>
 </html>
