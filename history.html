@@ -182,6 +182,74 @@
     </main>
   </div>
 
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('w-64');
+      sidebar.classList.toggle('w-20');
+      sidebar.classList.toggle('minimized');
+    });
+  </script>
+
+  <script>
+    const settingsBtn = document.getElementById('settingsBtn');
+    const settingsDropdown = document.getElementById('settingsDropdown');
+      
+    document.addEventListener('click', function (e) {
+      if (settingsBtn.contains(e.target)) {
+        settingsDropdown.classList.toggle('hidden');
+      } else if (!settingsDropdown.contains(e.target)) {
+        settingsDropdown.classList.add('hidden');
+      }
+    });
+  </script>
+  <script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const currentPage = location.pathname.split('/').pop();
+  
+    links.forEach(link => {
+      const page = link.getAttribute('data-page');
+      if (page === currentPage) {
+        link.classList.add('border-blue-600', 'font-semibold');
+        link.classList.remove('border-transparent');
+  
+        const icon = link.querySelector('.material-icons');
+        const text = link.querySelector('.sidebar-text');
+  
+        if (icon) icon.classList.add('text-blue-600');
+        if (text) text.classList.add('text-blue-600');
+      }
+    });
+  </script>
+  
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const statusFilter = document.getElementById('statusFilter');
+    const tableRows = document.querySelectorAll('#transactionTable tr');
+  
+    function filterTable() {
+      const searchText = searchInput.value.toLowerCase();
+      const statusValue = statusFilter.value.toLowerCase();
+  
+      tableRows.forEach(row => {
+        const date = row.cells[0].textContent.toLowerCase();
+        const type = row.cells[1].textContent.toLowerCase();
+        const amount = row.cells[2].textContent.toLowerCase();
+        const status = row.cells[3].textContent.toLowerCase();
+  
+        const matchesSearch = date.includes(searchText) || type.includes(searchText) || amount.includes(searchText);
+        const matchesStatus = !statusValue || status.includes(statusValue);
+  
+        row.style.display = matchesSearch && matchesStatus ? '' : 'none';
+      });
+    }
+  
+    searchInput.addEventListener('input', filterTable);
+    statusFilter.addEventListener('change', filterTable);
+  </script>
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </body>
 </html>
