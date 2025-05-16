@@ -71,7 +71,6 @@
       
         
         <div class="relative">
-          
           <button id="settingsBtn" class="material-icons mt-1.5 text-gray-600 hover:text-gray-800 focus:outline-none">
             settings
           </button>
@@ -126,5 +125,124 @@
       </div>
     </main>
   </div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('w-64');
+      sidebar.classList.toggle('w-20');
+      sidebar.classList.toggle('minimized');
+    });
+
+    
+    const monthlySpendCtx = document.getElementById('monthlySpendChart').getContext('2d');
+    new Chart(monthlySpendCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: 'Spending (₱)',
+          data: [800, 950, 1100, 980, 1200],
+          borderColor: '#6366F1',
+          backgroundColor: 'rgba(99, 102, 241, 0.1)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    
+    const usageCtx = document.getElementById('usageChart').getContext('2d');
+    new Chart(usageCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Spent'],
+        datasets: [{
+          label: '₱',
+          data: [1200],
+          backgroundColor: '#34D399'
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            beginAtZero: true,
+            max: 2000
+          }
+        }
+      }
+    });
+
+    
+    const balanceCtx = document.getElementById('balanceChart').getContext('2d');
+    new Chart(balanceCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Remaining'],
+        datasets: [{
+          label: '₱',
+          data: [800],
+          backgroundColor: '#60A5FA'
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            beginAtZero: true,
+            max: 2000
+          }
+        }
+      }
+    });
+  </script>
+
+  <script>
+    const settingsBtn = document.getElementById('settingsBtn');
+    const settingsDropdown = document.getElementById('settingsDropdown');
+      
+    document.addEventListener('click', function (e) {
+      if (settingsBtn.contains(e.target)) {
+        settingsDropdown.classList.toggle('hidden');
+      } else if (!settingsDropdown.contains(e.target)) {
+        settingsDropdown.classList.add('hidden');
+      }
+    });
+  </script>
+
+<script>
+  const links = document.querySelectorAll('.sidebar-link');
+  const currentPage = location.pathname.split('/').pop();
+
+  links.forEach(link => {
+    const page = link.getAttribute('data-page');
+    if (page === currentPage) {
+      link.classList.add('border-blue-600', 'font-semibold');
+      link.classList.remove('border-transparent');
+
+      const label = link.querySelector('.nav-label');
+      const icon = link.querySelector('.nav-icon');
+
+      if (label) label.classList.add('text-blue-600');
+      if (icon) icon.classList.add('text-blue-600');
+    }
+  });
+</script>
+
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </body>
 </html>
