@@ -18,14 +18,16 @@
       display: block;
     }
   </style>
+
 </head>
-<body class="flex min-h-screen bg-gray-100">
+
+  <body class="flex min-h-screen bg-gray-100">
   <aside id="sidebar" class="sidebar w-64 bg-white shadow-md transition-all duration-300 ease-in-out h-full-screen">
     <div class="flex items-center justify-between p-4">
       <h2 class="text-xl font-bold sidebar-text">Parent</h2>
     </div>
 
-    <div class="flex items-center gap-4 p-4">
+      <div class="flex items-center gap-4 p-4">
       <img src="https://i.pravatar.cc/80" alt="User" class="w-12 h-12 rounded-full" />
       <div class="sidebar-text">
         <p class="font-semibold text-gray-800 relative">Jahmai Destura</p>
@@ -33,7 +35,7 @@
       </div>
     </div>
 
-    <nav class="mt-4 space-y-2">
+      <nav class="mt-4 space-y-2">
       <div class="flex items-center px-4 ms-1 sidebar-text text-gray-400">
         <h3>Main Navigation</h3>
       </div>
@@ -52,7 +54,7 @@
     </nav>
   </aside>
 
-  <div class="flex-1 flex flex-col">
+    <div class="flex-1 flex flex-col">
     <header class="flex justify-between items-center bg-white px-6 py-4 shadow">
       <button id="toggleBtn" class="focus:outline-none">
         <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,15 +62,15 @@
         </svg>
       </button>
       <h1 class="text-xl font-bold">Cashteen</h1>
-      <div class="flex items-center gap-6 relative">
+        <div class="flex items-center gap-6 relative">
         <button class="bg-red-600 rounded-full px-6 py-0 font-semibold transition-all duration-300 ease-in-out transform hover:bg-red-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300">
           <a href="index.html" class="text-white block">Logout</a>
         </button>
 
-        <div class="relative">
+          <div class="relative">
           <button id="settingsBtn" class="material-icons mt-1.5 text-gray-600 hover:text-gray-800 focus:outline-none">
             settings
-          </button>
+            </button>
           <div id="settingsDropdown" class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg hidden z-50">
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Edit Profile</a>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Change Password</a>
@@ -77,16 +79,15 @@
       </div>
     </header>
 
-    <main class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
-      <div class="w-full max-w-xl bg-white p-10 rounded-3xl shadow-lg">
+      <main class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
+        <div class="w-full max-w-xl bg-white p-10 rounded-3xl shadow-lg">
         <h2 class="text-3xl font-extrabold text-center text-blue-600 mb-2">Top Up Wallet</h2>
         <p class="text-sm text-gray-500 text-center mb-8">
           Securely add funds using your preferred payment method. Most transactions reflect within minutes.
         </p>
-      
-        <form class="space-y-6">
-          <div>
-            <label for="amount" class="block text-sm font-medium text-gray-700 mb-2">Amount (₱)</label>
+          <form class="space-y-6">
+            <div>
+              <label for="amount" class="block text-sm font-medium text-gray-700 mb-2">Amount (₱)</label>
             <div class="relative">
               <span class="absolute inset-y-0 left-3 flex items-center text-gray-400 text-sm">₱</span>
               <input
@@ -101,7 +102,7 @@
             </div>
             <p class="text-xs text-gray-400 mt-1">Minimum top-up is ₱1.00</p>
           </div>
-      
+
           <div>
             <label for="payment-method" class="block text-sm font-medium text-gray-700 mb-2">Payment Method</label>
             <select
@@ -115,7 +116,7 @@
               <option value="gcash">📱 GCash</option>
             </select>
           </div>
-      
+
           <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-lg text-sm">
             <strong>Reminder:</strong> Please verify your amount and method before submitting. Transactions are final.
           </div>
