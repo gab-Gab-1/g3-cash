@@ -35,7 +35,6 @@
       <h2 class="text-xl font-bold sidebar-text">Admin</h2>
     </div>
 
-  
     <div class="flex items-center gap-4 p-4">
       <img src="https://i.pravatar.cc/80" alt="User" class="w-12 h-12 rounded-full" />
       <div class="sidebar-text">
@@ -44,7 +43,6 @@
       </div>
     </div>
 
-    
     <nav class="mt-4 space-y-2">
       <div class="flex items-center px-4 ms-1 sidebar-text text-gray-400">
         <h3>Main Navigation</h3>
@@ -75,8 +73,6 @@
       </a>
     </nav>
   </aside>
-
-  
   <div class="flex-1 flex flex-col">
     <header class="flex justify-between items-center bg-white px-6 py-4 shadow-strong">
       <button id="toggleBtn" class="focus:outline-none">
@@ -101,9 +97,7 @@
       </div>
     </header>
 
-    
     <main class="flex-1 p-8">
-        
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           <div class="bg-white p-6 rounded-xl shadow-strong text-center">
             <h3 class="text-gray-600 text-sm">Total Students</h3>
@@ -122,8 +116,7 @@
             <p class="text-2xl font-bold text-orange-500">₱5,780</p>
           </div>
         </div>
-    
-        
+
         <div class="bg-white p-6 rounded-xl shadow-strong mb-10">
           <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Transactions</h3>
           <ul class="divide-y divide-gray-200">
@@ -137,8 +130,7 @@
             </li>
           </ul>
         </div>
-    
-       
+
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <a href="register.html" class="bg-indigo-100 hover:bg-indigo-200 p-4 rounded-xl text-center">
             <span class="material-icons block text-indigo-600 text-3xl">person_add</span>
@@ -148,7 +140,7 @@
             <span class="material-icons block text-green-600 text-3xl">add_card</span>
             <p class="text-sm mt-2 text-green-700 font-semibold">Assign RFID</p>
           </a>
-          <a href="#" class="bg-yellow-100 hover:bg-yellow-200 p-4 rounded-xl text-center">
+          <a href="menu.html" class="bg-yellow-100 hover:bg-yellow-200 p-4 rounded-xl text-center">
             <span class="material-icons block text-yellow-600 text-3xl">restaurant</span>
             <p class="text-sm mt-2 text-yellow-700 font-semibold">Update Menu</p>
           </a>
@@ -156,6 +148,43 @@
       </main>
     
   </div>
+
+
+    <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+    toggleBtn?.addEventListener('click', () => {
+      sidebar?.classList.toggle('w-64');
+      sidebar?.classList.toggle('w-20');
+      sidebar?.classList.toggle('minimized');
+    });
+  </script>
+  <script>
+    const settingsBtn = document.getElementById('settingsBtn');
+    const settingsDropdown = document.getElementById('settingsDropdown');
+    document.addEventListener('click', function (e) {
+      if (settingsBtn?.contains(e.target)) {
+        settingsDropdown?.classList.toggle('hidden');
+      } else if (!settingsDropdown?.contains(e.target)) {
+        settingsDropdown?.classList.add('hidden');
+      }
+    });
+  </script>
+  <script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const currentPage = location.pathname.split('/').pop();
+    links.forEach(link => {
+      const page = link.getAttribute('data-page');
+      if (page === currentPage) {
+        link.classList.add('border-blue-600', 'font-semibold');
+        link.classList.remove('border-transparent');
+        const icon = link.querySelector('.material-icons');
+        const text = link.querySelector('.sidebar-text');
+        icon?.classList.add('text-blue-600');
+        text?.classList.add('text-blue-600');
+      }
+    });
+  </script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </body>
 </html>
