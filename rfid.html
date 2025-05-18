@@ -1,0 +1,186 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+</head>
+<body class="flex min-h-screen bg-gray-100">
+
+  <aside id="sidebar" class="sidebar w-64 bg-white transition-all duration-300 ease-in-out h-full-screen">
+    <div class="flex items-center justify-between p-4">
+      <h2 class="text-xl font-bold sidebar-text">Admin</h2>
+    </div>
+
+    <div class="flex items-center gap-4 p-4">
+      <img src="https://i.pravatar.cc/80" alt="User" class="w-12 h-12 rounded-full" />
+      <div class="sidebar-text">
+        <p class="font-semibold text-gray-800 relative">Carlos Lacza</p>
+        <p class="text-sm text-gray-500">carlos@gmail.com</p>
+      </div>
+    </div>
+
+    <nav class="mt-4 space-y-2">
+      <div class="flex items-center px-4 ms-1 sidebar-text text-gray-400">
+        <h3>Main Navigation</h3>
+      </div>
+      <a href="admin-dashboard.html" data-page="admin-dashboard.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
+        <span class="material-icons mr-2">dashboard</span>
+        <span class="sidebar-text flex-1">Dashboard</span>
+      </a>
+      <a href="register.html" data-page="register.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
+        <span class="material-icons mr-2">child_care</span>
+        <span class="sidebar-text flex-1">Register Child</span>
+      </a>
+      <a href="manage.html" data-page="manage.html"class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+        <span class="material-icons mr-2">group</span>
+        <span class="sidebar-text flex-1">Manage Students</span>
+      </a>
+      <a href="rfid.html" data-page="rfid.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 bg-blue-100 border-l-4 border-transparent">
+        <span class="material-icons mr-2">contactless</span>
+        <span class="sidebar-text flex-1">RFID Management</span>
+      </a>
+      <a href="menu.html" data-page="menu.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
+        <span class="material-icons mr-2">restaurant_menu</span>
+        <span class="sidebar-text flex-1">Manage Menu</span>
+      </a>
+    </nav>
+  </aside>
+
+  <div class="flex-1 flex flex-col">
+    <header class="flex justify-between items-center bg-white px-6 py-4">
+      <button id="toggleBtn" class="focus:outline-none">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <h1 class="text-xl font-bold">Cashteen</h1>
+      <div class="flex items-center gap-6 relative">
+        <button class="bg-red-600 rounded-full px-6 py-0 font-semibold transition-all duration-300 ease-in-out transform hover:bg-red-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300">
+          <a href="index.html" class="text-white block">Logout</a>
+        </button>
+        <div class="relative">
+          <button id="settingsBtn" class="material-icons mt-1.5 text-gray-600 hover:text-gray-800 focus:outline-none">
+            settings
+          </button>
+          <div id="settingsDropdown" class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-strong hidden z-50">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Edit Profile</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Change Password</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 p-8">
+        <div class="bg-white p-6 rounded-xl shadow-strong mb-6">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">RFID Management</h2>
+          <div class="mb-4 flex justify-between items-center">
+            <input type="text" placeholder="Search RFID or Student ID" class="border border-gray-300 rounded-lg px-4 py-2 w-1/2">
+            <button class="bg-blue-600 font-bold text-white px-4 py-2 rounded-full hover:bg-blue-700">Scan RFID</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white">
+              <thead>
+                <tr>
+                  <th class="text-left py-2 px-4 border-b">RFID Code</th>
+                  <th class="text-left py-2 px-4 border-b">Assigned To</th>
+                  <th class="text-left py-2 px-4 border-b">Status</th>
+                  <th class="text-left py-2 px-4 border-b">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="py-2 px-4 border-b">A1B2C3D4</td>
+                  <td class="py-2 px-4 border-b">Juan Dela Cruz</td>
+                  <td class="py-2 px-4 border-b">
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Active</span>
+                  </td>
+                  <td class="py-2 px-4 border-b">
+                    <div class="flex gap-2">
+                      <button onclick="openModal('reassignModal')" class="bg-blue-600 text-white text-sm px-4 py-1.5 rounded-full hover:bg-blue-700 transition">Reassign</button>
+                      <button onclick="openModal('deactivateModal')" class="bg-red-600 text-white text-sm px-4 py-1.5 rounded-full hover:bg-red-700 transition">Deactivate</button>
+                    </div>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+<div id="reassignModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
+    <h3 class="text-xl font-semibold mb-4">Reassign RFID</h3>
+    <p class="text-gray-600 mb-4">Enter the new student ID to reassign this RFID.</p>
+    <input type="text" placeholder="New Student ID" class="w-full border border-gray-300 rounded px-4 py-2 mb-4" />
+    <div class="flex justify-end gap-2">
+      <button onclick="closeModal('reassignModal')" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Cancel</button>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<div id="deactivateModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
+    <h3 class="text-xl font-semibold mb-4">Deactivate RFID</h3>
+    <p class="text-gray-600 mb-4">Are you sure you want to deactivate this RFID?</p>
+    <div class="flex justify-end gap-2">
+      <button onclick="closeModal('deactivateModal')" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Cancel</button>
+      <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Deactivate</button>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <script>
+  function openModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.add('hidden');
+  }
+  </script>
+
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('w-64');
+      sidebar.classList.toggle('w-20');
+      sidebar.classList.toggle('minimized');
+    });
+  </script>
+  <script>
+    const settingsBtn = document.getElementById('settingsBtn');
+    const settingsDropdown = document.getElementById('settingsDropdown');
+    document.addEventListener('click', function (e) {
+      if (settingsBtn.contains(e.target)) {
+        settingsDropdown.classList.toggle('hidden');
+      } else if (!settingsDropdown.contains(e.target)) {
+        settingsDropdown.classList.add('hidden');
+      }
+    });
+  </script>
+  <script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const currentPage = location.pathname.split('/').pop();
+    links.forEach(link => {
+      const page = link.getAttribute('data-page');
+      if (page === currentPage) {
+        link.classList.add('border-blue-600', 'font-semibold');
+        link.classList.remove('border-transparent');
+        const icon = link.querySelector('.material-icons');
+        const text = link.querySelector('.sidebar-text');
+        if (icon) icon.classList.add('text-blue-600');
+        if (text) text.classList.add('text-blue-600');
+      }
+    });
+  </script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</body>
+</html>

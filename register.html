@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .sidebar.minimized .sidebar-text {
+      display: none;
+    }
+
+    .dropdown-menu {
+      display: none;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+    
+    .sidebar-link .material-icons {
+        width: 24px;
+        text-align: center;
+        font-size: 24px;
+        margin-right: 12px;
+    }
+    </style>
+</head>
+<body class="flex min-h-screen bg-gray-100">
+
+
+  <aside id="sidebar" class="sidebar w-64 bg-white shadow-md transition-all duration-300 ease-in-out h-full-screen">
+    <div class="flex items-center justify-between p-4">
+      <h2 class="text-xl font-bold sidebar-text">Admin</h2>
+    </div>
+
+
+    <div class="flex items-center gap-4 p-4">
+      <img src="https://i.pravatar.cc/80" alt="User" class="w-12 h-12 rounded-full" />
+      <div class="sidebar-text">
+        <p class="font-semibold text-gray-800 relative">Carlos Lacza</p>
+        <p class="text-sm text-gray-500">carlos@gmail.com</p>
+      </div>
+    </div>
+
+    <nav class="mt-4 space-y-2">
+      <div class="flex items-center px-4 ms-1 sidebar-text text-gray-400">
+        <h3>Main Navigation</h3>
+      </div>
+      <a href="admin-dashboard.html" data-page="admin-dashboard.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
+        <span class="material-icons mr-2">dashboard</span>
+        <span class="sidebar-text flex-1">Dashboard</span>
+      </a>
+      <a href="register.html" data-page="register.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 bg-blue-100 border-l-4 border-transparent">
+        <span class="material-icons mr-2">child_care</span>
+        <span class="sidebar-text flex-1">Register Child</span>
+      </a>
+      <a href="manage.html" data-page="manage.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+        <span class="material-icons mr-2">group</span>
+        <span class="sidebar-text flex-1">Manage Students</span>
+      </a>
+      <a href="rfid.html" data-page="rfid.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+        <span class="material-icons mr-2">contactless</span>
+        <span class="sidebar-text flex-1">RFID Management</span>
+      </a>
+      <a href="menu.html" data-page="menu.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
+        <span class="material-icons mr-2">restaurant_menu</span>
+        <span class="sidebar-text flex-1">Manage Menu</span>
+      </a>
+    </nav>
+  </aside>
+
+
+  <div class="flex-1 flex flex-col">
+    <header class="flex justify-between items-center bg-white px-6 py-4 shadow">
+      <button id="toggleBtn" class="focus:outline-none">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <h1 class="text-xl font-bold">Cashteen</h1>
+      <div class="flex items-center gap-6 relative">
+        
+        <button class="bg-red-600 rounded-full px-6 py-0 font-semibold transition-all duration-300 ease-in-out transform hover:bg-red-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300">
+          <a href="index.html" class="text-white block">Logout</a>
+        </button>
+      
+
+        <div class="relative">
+          
+          <button id="settingsBtn" class="material-icons mt-1.5 text-gray-600 hover:text-gray-800 focus:outline-none">
+            settings
+          </button>
+          
+          <div id="settingsDropdown" class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg hidden z-50">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Edit Profile</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Change Password</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <main class="bg-gray-100 flex items-center justify-center px-4 py-10 min-h-[calc(100vh-8rem)]">
+        <div class="w-full max-w-2xl bg-white p-12 rounded-3xl shadow-xl">
+          
+          <h2 class="text-3xl font-bold text-center text-blue-700 mb-8">Register a Child</h2>
+          
+          <div class="mb-6 p-4 border-l-4 border-red-500 bg-red-50 rounded-lg text-sm text-red-700">
+            <strong>Note:</strong> An RFID code will be automatically generated before registering a child.
+          </div>
+      
+          <form id="registerChildForm" class="space-y-6">
+            
+            <div>
+              <h3 class="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Child Information</h3>
+      
+              <div class="relative mb-4">
+                <label for="childName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                <div class="flex items-center mt-1">
+                  <span class="material-icons absolute pl-3 text-gray-400">person</span>
+                  <input type="text" id="childName" name="childName" required minlength="2"
+                         class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg" />
+                </div>
+              </div>
+      
+              <div class="mb-4">
+                <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
+                <input type="number" id="age" name="age" required min="1" max="18"
+                       class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg" />
+              </div>
+      
+              <div class="mb-4">
+                <label for="grade" class="block text-sm font-medium text-gray-700">Grade Level</label>
+                <select id="grade" name="grade" required
+                        class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg">
+                  <option value="">Select Grade</option>
+                  <option value="1">Grade 1</option>
+                  <option value="2">Grade 2</option>
+                  <option value="3">Grade 3</option>
+                  <option value="4">Grade 4</option>
+                  <option value="5">Grade 5</option>
+                  <option value="6">Grade 6</option>
+                </select>
+              </div>
+      
+              <div class="relative mb-4">
+                <label for="rfid" class="block text-sm font-medium text-gray-700">RFID Code</label>
+                <div class="flex items-center mt-1">
+                  <span class="material-icons absolute pl-3 text-gray-400">credit_card</span>
+                  <input type="text" id="rfid" name="rfid" 
+                         class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-700" />
+                </div>
+              </div>
+            </div>
+      
+
+            <div class="pt-4">
+              <button type="submit" class="w-full bg-blue-600 text-white text-lg font-medium px-6 py-2 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                Register Child
+              </button>
+            </div>
+          </form>
+      
+
+          <div id="successModal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+            <div class="bg-white p-6 rounded-lg shadow-xl w-80 text-center">
+              <h4 class="text-lg font-bold text-green-600">Child Registered Successfully!</h4>
+              <p class="text-sm text-gray-600 mt-2">You can now manage this child’s wallet and view transactions.</p>
+              <button id="closeModalBtn" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Close</button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+  </div>
+
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('w-64');
+      sidebar.classList.toggle('w-20');
+      sidebar.classList.toggle('minimized');
+    });
+  </script>
+
+<script>
+  const settingsBtn = document.getElementById('settingsBtn');
+  const settingsDropdown = document.getElementById('settingsDropdown');
+    
+  document.addEventListener('click', function (e) {
+    if (settingsBtn.contains(e.target)) {
+      settingsDropdown.classList.toggle('hidden');
+    } else if (!settingsDropdown.contains(e.target)) {
+      settingsDropdown.classList.add('hidden');
+    }
+  });
+</script>
+
+<script>
+  const links = document.querySelectorAll('.sidebar-link');
+  const currentPage = location.pathname.split('/').pop();
+
+  links.forEach(link => {
+    const page = link.getAttribute('data-page');
+    if (page === currentPage) {
+      link.classList.add('border-blue-600', 'font-semibold');
+      link.classList.remove('border-transparent');
+
+      const icon = link.querySelector('.material-icons');
+      const text = link.querySelector('.sidebar-text');
+
+      if (icon) icon.classList.add('text-blue-600');
+      if (text) text.classList.add('text-blue-600');
+    }
+  });
+</script>
+
+<script>
+  function generateRFID() {
+    const rfid = 'RFID-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+    document.getElementById('generatedRfid').value = rfid;
+    document.getElementById('rfid').value = rfid;
+  }
+
+  const form = document.getElementById('registerChildForm');
+  const successModal = document.getElementById('successModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+
+  if (form && successModal && closeModalBtn) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      successModal.classList.remove('hidden');
+      successModal.classList.add('flex');
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      successModal.classList.add('hidden');
+      successModal.classList.remove('flex');
+      form.reset();
+      document.getElementById('generatedRfid').value = '';
+      document.getElementById('rfid').value = '';
+    });
+  }
+</script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</body>
+</html>

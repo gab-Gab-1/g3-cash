@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg space-y-6">
+    <h2 class="text-3xl font-semibold text-center text-blue-600">Welcome!</h2>
+
+    <div>
+      <label for="role" class="block text-sm font-medium text-gray-700">Login as</label>
+      <select id="role" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+        <option value="parent">Parent</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+
+    <form id="login-form" class="space-y-6">
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+        <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="you@example.com" />
+        <p id="email-error" class="text-xs text-red-500 hidden">Please enter a valid email address.</p>
+      </div>
+
+      
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="password" name="password" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="******" />
+        <p id="password-error" class="text-xs text-red-500 hidden">Password must be at least 6 characters.</p>
+      </div>
+
+      
+      <div>
+        <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Login</button>
+      </div>
+
+      
+      <div class="text-center text-sm">
+        <span class="text-gray-600">Don't have an account? </span>
+        <a href="#" class="text-indigo-600 hover:text-indigo-700">Sign Up</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const emailError = document.getElementById('email-error');
+    const passwordError = document.getElementById('password-error');
+    const roleSelect = document.getElementById('role');
+
+    const parentCredentials = {
+      email: "jahmai@gmail.com",
+      password: "123123"
+    };
+
+    const adminCredentials = {
+      email: "admin@gmail.com",
+      password: "000000"
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const role = roleSelect.value;
+      let credentials;
+
+      if (role === "admin") {
+        credentials = adminCredentials;
+      } else {
+        credentials = parentCredentials;
+      }
+
+      let isValid = true;
+
+      if (emailInput.value !== credentials.email) {
+        emailError.classList.remove('hidden');
+        isValid = false;
+      } else {
+        emailError.classList.add('hidden');
+      }
+
+      if (passwordInput.value !== credentials.password) {
+        passwordError.classList.remove('hidden');
+        isValid = false;
+      } else {
+        passwordError.classList.add('hidden');
+      }
+
+      if (isValid) {
+        if (role === "admin") {
+          window.location.href = 'admin-dashboard.html';
+        } else if (role === "parent") {
+          window.location.href = 'parents-dashboard.html';
+        }
+      } else {
+        alert('Invalid login credentials.');
+      }
+    });
+  </script>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</body>
+</html>
