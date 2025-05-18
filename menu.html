@@ -7,35 +7,32 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
-    .sidebar.minimized .sidebar-text { display: none; }
-    .dropdown-menu { display: none; }
-    .dropdown-menu.show { display: block; }
-    .shadow-strong { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
-    .sidebar-link .material-icons {
-      width: 24px;
-      text-align: center;
-      font-size: 24px;
-      margin-right: 12px;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .cart-remove {
-      background-color: #e53e3e;
-      color: #fff;
-      border: none;
-      padding: 0.25rem 0.75rem;
-      border-radius: 0.375rem;
-      cursor: pointer;
-    }
+  .sidebar.minimized .sidebar-text {
+    display: none;
+  }
+
+  .dropdown-menu {
+    display: none;
+  }
+
+  .dropdown-menu.show {
+    display: block;
+  }
+
+  .shadow-strong {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .sidebar-link .material-icons {
+    width: 24px;
+    text-align: center;
+    font-size: 24px;
+    margin-right: 12px;
+  }
   </style>
 
 </head>
 <body class="flex min-h-screen bg-gray-100">
-
-  
   <aside id="sidebar" class="sidebar w-64 bg-white transition-all duration-300 ease-in-out h-full-screen">
     <div class="flex items-center justify-between p-4">
       <h2 class="text-xl font-bold sidebar-text">Admin</h2>
@@ -43,11 +40,11 @@
     <div class="flex items-center gap-4 p-4">
       <img src="https://i.pravatar.cc/80" alt="User" class="w-12 h-12 rounded-full" />
       <div class="sidebar-text">
-        <p class="font-semibold text-gray-800 relative">Carlos Lacza</p>
+        <p class="font-semibold text-gray-800">Carlos Lacza</p>
         <p class="text-sm text-gray-500">carlos@gmail.com</p>
       </div>
     </div>
-    <nav class="mt-4 space-y-2">
+    <nav class="mt-4 space-y-2 min-h-screen">
       <div class="flex items-center px-4 ms-1 sidebar-text text-gray-400">
         <h3>Main Navigation</h3>
       </div>
@@ -67,18 +64,13 @@
         <span class="material-icons mr-2">contactless</span>
         <span class="sidebar-text flex-1">RFID Management</span>
       </a>
-      <a href="report.html" data-page="report.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
-        <span class="material-icons mr-2">bar_chart</span>
-        <span class="sidebar-text flex-1">Reports</span>
-      </a>
-      <a href="menu.html" data-page="menu.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
+      <a href="menu.html" data-page="menu.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 bg-blue-100 border-l-4 border-transparent">
         <span class="material-icons mr-2">restaurant_menu</span>
         <span class="sidebar-text flex-1">Manage Menu</span>
       </a>
     </nav>
   </aside>
 
-  
   <div class="flex-1 flex flex-col">
     <header class="flex justify-between items-center bg-white px-6 py-4">
       <button id="toggleBtn" class="focus:outline-none">
@@ -88,13 +80,11 @@
       </button>
       <h1 class="text-xl font-bold">Cashteen</h1>
       <div class="flex items-center gap-6 relative">
-        <button class="bg-red-600 rounded-full px-6 py-0 font-semibold hover:bg-red-700 hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-red-300">
+        <button class="bg-red-600 rounded-full px-6 py-0 font-semibold transition-all duration-300 ease-in-out transform hover:bg-red-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300">
           <a href="index.html" class="text-white block">Logout</a>
         </button>
         <div class="relative">
-          <button id="settingsBtn" class="material-icons mt-1.5 text-gray-600 hover:text-gray-800 focus:outline-none">
-            settings
-          </button>
+          <button id="settingsBtn" class="material-icons mt-1.5 text-gray-600 hover:text-gray-800">settings</button>
           <div id="settingsDropdown" class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-strong hidden z-50">
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Edit Profile</a>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Change Password</a>
@@ -103,37 +93,50 @@
       </div>
     </header>
 
-    
-    <main class="flex-1 p-8">
-      <div class="bg-white p-6 rounded-xl shadow-strong mb-6">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6">Manage Menu</h2>
+    <main class="flex-1 p-6">
+      <div class="bg-white p-6 rounded-xl shadow-strong">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Manage Items</h2>
 
-        
-        <div class="bg-gray-50 p-4 rounded-lg mb-6">
-          <h3 class="text-lg font-semibold mb-2 text-gray-700">Add New Item</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <input id="itemName" type="text" placeholder="Item Name" class="border px-4 py-2 rounded-lg">
-            <input id="itemPrice" type="number" placeholder="Price" class="border px-4 py-2 rounded-lg">
-            <button onclick="addNewItem()" class="bg-green-600 text-white rounded-full px-4 py-2 hover:bg-green-700">Add Item</button>
+        <div class="inline-flex mb-6 bg-gray-200 p-1 rounded-full">
+          <button onclick="showManage()" id="manageBtn" class="px-4 py-2 rounded-full font-semibold text-white bg-blue-600">Manage Items</button>
+          <button onclick="showOrder()" id="orderBtn" class="px-4 py-2 rounded-full font-semibold text-gray-700">Order Items</button>
+        </div>
+
+        <div id="manageSection" class="flex flex-col max-h-[600px]">
+          <div class="bg-blue-50 p-6 rounded-xl shadow mb-4">
+            <h3 class="text-xl font-bold text-blue-700 mb-4">Add New Item</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <input id="itemName" type="text" placeholder="Item Name" class="border border-gray-300 px-4 py-2 rounded-full focus:ring-2 focus:ring-blue-500">
+              <input id="itemPrice" type="number" placeholder="Price" class="border border-gray-300 px-4 py-2 rounded-full focus:ring-2 focus:ring-blue-500">
+              <button onclick="addNewItem()" class="bg-blue-600 text-white font-bold px-4 py-2 rounded-full hover:bg-blue-700">Add</button>
+            </div>
+          </div>
+
+          <div class="flex-1 overflow-y-auto">
+            <ul id="itemList" class="space-y-4"></ul>
           </div>
         </div>
 
-        
-        <div class="flex flex-col md:flex-row gap-6">
-          
-          <div class="w-full md:w-2/3 flex flex-col gap-2" id="item-list"></div>
-
-          
-          <div class="w-full md:w-1/3 bg-gray-50 p-4 rounded-lg shadow-inner flex flex-col h-[450px]">
-            <h3 class="text-xl font-semibold text-gray-700 mb-4 border-b">Cart</h3>
-            <ul id="cart" class="overflow-y-auto space-y-2 text-gray-700 mb-4 flex-1"></ul>
-            <div>
-              <div class="text-right text-lg font-bold text-gray-800 mb-4 border-t">
-                Total: ₱<span id="total">0.00</span>
+        <div id="orderSection" class="hidden h-[600px]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
+            <div class="flex flex-col h-full min-h-0">
+              <h3 class="text-xl font-bold text-blue-700 mb-4 border-b">Available Items</h3>
+              <div class="flex-1 overflow-y-auto min-h-0">
+                <ul id="orderItemList" class="space-y-4"></ul>
               </div>
-              <button onclick="location.href='scan-rfid.html'" class="w-full bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-800">
-                Proceed to Scan RFID
-              </button>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md flex flex-col h-full min-h-0">
+              <h3 class="text-xl font-bold text-gray-800 mb-4 border-b">Cart</h3>
+              <div class="flex-1 overflow-y-auto min-h-0 mb-4">
+                <ul id="cartList" class="space-y-2"></ul>
+              </div>
+              <div class="mt-auto pt-4 border-t">
+                <div class="text-xl font-semibold text-right mb-4">
+                  Total: ₱<span id="totalAmount">0.00</span>
+                </div>
+                <button onclick="scanRFID()" class="w-full bg-green-600 text-white py-2 rounded-full hover:bg-green-700">Scan RFID to Checkout</button>
+              </div>
             </div>
           </div>
         </div>
@@ -141,6 +144,231 @@
     </main>
   </div>
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <div id="successModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl shadow-xl max-w-sm w-full p-6">
+      <h2 class="text-xl font-bold text-green-600 mb-2">Item Added</h2>
+      <p class="text-gray-700 mb-4">The new item has been successfully added.</p>
+      <button onclick="closeSuccessModal()" class="bg-green-600 text-white w-full py-2 rounded-full hover:bg-green-700">OK</button>
+    </div>
+  </div>
+
+  <div id="editModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
+      <h2 class="text-xl font-bold text-yellow-600 mb-4">Edit Item</h2>
+      <div class="space-y-4">
+        <input id="editItemName" type="text" class="w-full border border-gray-300 px-4 py-2 rounded-full" placeholder="Item Name">
+        <input id="editItemPrice" type="number" class="w-full border border-gray-300 px-4 py-2 rounded-full" placeholder="Item Price">
+        <div class="flex justify-end gap-2">
+          <button onclick="closeEditModal()" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-400">Cancel</button>
+          <button onclick="saveEditedItem()" class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-xl shadow-xl max-w-sm w-full p-6">
+    <h2 class="text-xl font-bold text-red-600 mb-2">Confirm Deletion</h2>
+    <p class="text-gray-700 mb-4">Are you sure you want to delete this item?</p>
+    <div class="flex justify-end gap-2">
+      <button onclick="closeDeleteModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-400">Cancel</button>
+      <button onclick="confirmDelete()" class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700">Delete</button>
+    </div>
+  </div>
+</div>
+
+
+  <script>
+    const items = [
+      { name: 'Spaghetti', price: 35 },
+      { name: 'Hotdog', price: 20 },
+      { name: 'Fries', price: 57 },
+      { name: 'Juice', price: 15 }
+    ];
+    const cart = [];
+    let currentEditIndex = null;
+    let deleteIndex = null;
+
+    function renderItems() {
+      const list = document.getElementById('itemList');
+      list.innerHTML = '';
+      items.forEach((item, index) => {
+        list.innerHTML += `
+          <li class="bg-white rounded-xl shadow p-4 flex justify-between items-center hover:shadow-md transition">
+            <div>
+              <h4 class="text-lg font-semibold text-gray-800">${item.name}</h4>
+              <p class="text-sm text-gray-500">₱${item.price.toFixed(2)}</p>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="editItem(${index})" class="px-4 py-1 bg-yellow-500 text-white rounded-full hover:bg-yellow-600">Edit</button>
+              <button onclick="deleteItem(${index})" class="px-4 py-1 bg-red-500 text-white rounded-full hover:bg-red-600">Delete</button>
+            </div>
+          </li>`;
+      });
+    }
+
+    function renderOrderItems() {
+      const list = document.getElementById('orderItemList');
+      list.innerHTML = '';
+      items.forEach((item, index) => {
+        list.innerHTML += `
+          <li class="bg-white rounded-xl shadow p-4 flex justify-between items-center hover:shadow-md transition">
+            <div>
+              <h4 class="text-lg font-semibold text-gray-800">${item.name}</h4>
+              <p class="text-sm text-gray-500">₱${item.price.toFixed(2)}</p>
+            </div>
+            <button onclick="addToCart(${index})" class="px-4 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600">Add to Cart</button>
+          </li>`;
+      });
+    }
+
+    function renderCart() {
+      const list = document.getElementById('cartList');
+      list.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        list.innerHTML += `
+          <li class="flex justify-between items-center bg-white px-4 py-2 rounded-full">
+            <span>${item.name} (₱${item.price.toFixed(2)})</span>
+            <button onclick="removeFromCart(${index})" class="text-white rounded-full px-4 py-1 hover:bg-red-800 bg-red-600">remove</button>
+          </li>`;
+        total += item.price;
+      });
+      document.getElementById('totalAmount').innerText = total.toFixed(2);
+    }
+
+    function addNewItem() {
+      const name = document.getElementById('itemName').value.trim();
+      const price = parseFloat(document.getElementById('itemPrice').value);
+      if (name && !isNaN(price)) {
+        items.push({ name, price });
+        document.getElementById('itemName').value = '';
+        document.getElementById('itemPrice').value = '';
+        renderItems();
+        renderOrderItems();
+        showSuccessModal();
+      }
+    }
+
+    function deleteItem(index) {
+    deleteIndex = index;
+    document.getElementById('deleteModal').classList.remove('hidden');
+  }
+
+  function confirmDelete() {
+    if (deleteIndex !== null) {
+      items.splice(deleteIndex, 1);
+      renderItems();
+      renderOrderItems();
+      closeDeleteModal();
+    }
+  }
+
+  function closeDeleteModal() {
+    document.getElementById('deleteModal').classList.add('hidden');
+  }
+
+    
+
+function editItem(index) {
+  const item = items[index];
+  currentEditIndex = index;
+  document.getElementById('editItemName').value = item.name;
+  document.getElementById('editItemPrice').value = item.price;
+  document.getElementById('editModal').classList.remove('hidden');
+}
+
+function closeEditModal() {
+  document.getElementById('editModal').classList.add('hidden');
+}
+
+function saveItemChanges() {
+  const name = document.getElementById('editItemName').value.trim();
+  const price = parseFloat(document.getElementById('editItemPrice').value);
+
+  if (name && !isNaN(price) && currentEditIndex !== null) {
+    items[currentEditIndex] = { name, price };
+    renderItems();
+    renderOrderItems();
+    closeEditModal();
+  }
+}
+
+
+    function addToCart(index) {
+      cart.push(items[index]);
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function scanRFID() {
+      alert('Scanning RFID...');
+    }
+
+    function showManage() {
+      document.getElementById('manageSection').classList.remove('hidden');
+      document.getElementById('orderSection').classList.add('hidden');
+      document.getElementById('manageBtn').classList.add('bg-blue-600', 'text-white');
+      document.getElementById('orderBtn').classList.remove('bg-blue-600', 'text-white');
+    }
+
+    function showOrder() {
+      document.getElementById('manageSection').classList.add('hidden');
+      document.getElementById('orderSection').classList.remove('hidden');
+      document.getElementById('orderBtn').classList.add('bg-blue-600', 'text-white');
+      document.getElementById('manageBtn').classList.remove('bg-blue-600', 'text-white');
+      renderOrderItems();
+      renderCart();
+    }
+
+    function showSuccessModal() {
+      document.getElementById('successModal').classList.remove('hidden');
+    }
+
+    function closeSuccessModal() {
+      document.getElementById('successModal').classList.add('hidden');
+    }
+
+    window.onload = () => {
+      renderItems();
+    };
+  </script>
+  <script>
+    const settingsBtn = document.getElementById('settingsBtn');
+    const settingsDropdown = document.getElementById('settingsDropdown');
+    document.addEventListener('click', function (e) {
+      if (settingsBtn.contains(e.target)) {
+        settingsDropdown.classList.toggle('hidden');
+      } else if (!settingsDropdown.contains(e.target)) {
+        settingsDropdown.classList.add('hidden');
+      }
+    });
+
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('w-64');
+      sidebar.classList.toggle('w-20');
+      sidebar.classList.toggle('minimized');
+    });
+
+    const links = document.querySelectorAll('.sidebar-link');
+    const currentPage = location.pathname.split('/').pop();
+    links.forEach(link => {
+      const page = link.getAttribute('data-page');
+      if (page === currentPage) {
+        link.classList.add('border-blue-600', 'font-semibold');
+        link.classList.remove('border-transparent');
+        const icon = link.querySelector('.material-icons');
+        const text = link.querySelector('.sidebar-text');
+        if (icon) icon.classList.add('text-blue-600');
+        if (text) text.classList.add('text-blue-600');
+      }
+    });
+  </script>
 </body>
 </html>
