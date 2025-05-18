@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -18,18 +18,15 @@
       display: block;
     }
 
-    
     .sidebar-link .material-icons {
-        width: 24px;
-        text-align: center;
-        font-size: 24px;
-        margin-right: 12px;
+      width: 24px;
+      text-align: center;
+      font-size: 24px;
+      margin-right: 12px;
     }
   </style>
 </head>
 <body class="flex min-h-screen bg-gray-100">
-
-  
   <aside id="sidebar" class="sidebar w-64 bg-white shadow-strong transition-all duration-300 ease-in-out h-full-screen">
     <div class="flex items-center justify-between p-4">
       <h2 class="text-xl font-bold sidebar-text">Admin</h2>
@@ -47,7 +44,7 @@
       <div class="flex items-center px-4 ms-1 sidebar-text text-gray-400">
         <h3>Main Navigation</h3>
       </div>
-      <a href="admin-dashboard.html" data-page="admin-dashboard.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
+      <a href="admin-dashboard.html" data-page="admin-dashboard.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 bg-blue-100 border-l-4 border-transparent">
         <span class="material-icons mr-2">dashboard</span>
         <span class="sidebar-text flex-1">Dashboard</span>
       </a>
@@ -63,16 +60,13 @@
         <span class="material-icons mr-2">contactless</span>
         <span class="sidebar-text flex-1">RFID Management</span>
       </a>
-      <a href="report.html" data-page="report.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
-        <span class="material-icons mr-2">bar_chart</span>
-        <span class="sidebar-text flex-1">Reports</span>
-      </a>
       <a href="menu.html" data-page="menu.html" class="sidebar-link flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 border-l-4 border-transparent">
         <span class="material-icons mr-2">restaurant_menu</span>
         <span class="sidebar-text flex-1">Manage Menu</span>
       </a>
     </nav>
   </aside>
+
   <div class="flex-1 flex flex-col">
     <header class="flex justify-between items-center bg-white px-6 py-4 shadow-strong">
       <button id="toggleBtn" class="focus:outline-none">
@@ -98,59 +92,57 @@
     </header>
 
     <main class="flex-1 p-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-          <div class="bg-white p-6 rounded-xl shadow-strong text-center">
-            <h3 class="text-gray-600 text-sm">Total Students</h3>
-            <p class="text-2xl font-bold text-indigo-600">1,245</p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow-strong text-center">
-            <h3 class="text-gray-600 text-sm">RFIDs Registered</h3>
-            <p class="text-2xl font-bold text-green-600">1,120</p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow-strong text-center">
-            <h3 class="text-gray-600 text-sm">Transactions Today</h3>
-            <p class="text-2xl font-bold text-blue-600">305</p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow-strong text-center">
-            <h3 class="text-gray-600 text-sm">Topups Today</h3>
-            <p class="text-2xl font-bold text-orange-500">₱5,780</p>
-          </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <div class="bg-white p-6 rounded-xl shadow-strong text-center">
+          <h3 class="text-gray-600 text-sm">Total Students</h3>
+          <p class="text-2xl font-bold text-indigo-600">1,245</p>
         </div>
+        <div class="bg-white p-6 rounded-xl shadow-strong text-center">
+          <h3 class="text-gray-600 text-sm">RFIDs Registered</h3>
+          <p class="text-2xl font-bold text-green-600">1,120</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-strong text-center">
+          <h3 class="text-gray-600 text-sm">Transactions Today</h3>
+          <p class="text-2xl font-bold text-blue-600">305</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-strong text-center">
+          <h3 class="text-gray-600 text-sm">Topups Today</h3>
+          <p class="text-2xl font-bold text-orange-500">₱5,780</p>
+        </div>
+      </div>
 
-        <div class="bg-white p-6 rounded-xl shadow-strong mb-10">
-          <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Transactions</h3>
-          <ul class="divide-y divide-gray-200">
-            <li class="py-2 flex justify-between">
-              <span>Juan Dela Cruz purchased Spaghetti</span>
-              <span class="text-gray-500 text-sm">10:22 AM</span>
-            </li>
-            <li class="py-2 flex justify-between">
-              <span>Maria Reyes topped up ₱100</span>
-              <span class="text-gray-500 text-sm">9:45 AM</span>
-            </li>
-          </ul>
-        </div>
+      <div class="bg-white p-6 rounded-xl shadow-strong mb-10">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Transactions</h3>
+        <ul class="divide-y divide-gray-200">
+          <li class="py-2 flex justify-between">
+            <span>Juan Dela Cruz purchased Spaghetti</span>
+            <span class="text-gray-500 text-sm">10:22 AM</span>
+          </li>
+          <li class="py-2 flex justify-between">
+            <span>Maria Reyes topped up ₱100</span>
+            <span class="text-gray-500 text-sm">9:45 AM</span>
+          </li>
+        </ul>
+      </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <a href="register.html" class="bg-indigo-100 hover:bg-indigo-200 p-4 rounded-xl text-center">
-            <span class="material-icons block text-indigo-600 text-3xl">person_add</span>
-            <p class="text-sm mt-2 text-indigo-700 font-semibold">Register Student</p>
-          </a>
-          <a href="rfid.html" class="bg-green-100 hover:bg-green-200 p-4 rounded-xl text-center">
-            <span class="material-icons block text-green-600 text-3xl">add_card</span>
-            <p class="text-sm mt-2 text-green-700 font-semibold">Assign RFID</p>
-          </a>
-          <a href="menu.html" class="bg-yellow-100 hover:bg-yellow-200 p-4 rounded-xl text-center">
-            <span class="material-icons block text-yellow-600 text-3xl">restaurant</span>
-            <p class="text-sm mt-2 text-yellow-700 font-semibold">Update Menu</p>
-          </a>
-        </div>
-      </main>
-    
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="register.html" class="bg-indigo-100 hover:bg-indigo-200 p-4 rounded-xl text-center">
+          <span class="material-icons block text-indigo-600 text-3xl">person_add</span>
+          <p class="text-sm mt-2 text-indigo-700 font-semibold">Register Student</p>
+        </a>
+        <a href="rfid.html" class="bg-green-100 hover:bg-green-200 p-4 rounded-xl text-center">
+          <span class="material-icons block text-green-600 text-3xl">add_card</span>
+          <p class="text-sm mt-2 text-green-700 font-semibold">Assign RFID</p>
+        </a>
+        <a href="menu.html" class="bg-yellow-100 hover:bg-yellow-200 p-4 rounded-xl text-center">
+          <span class="material-icons block text-yellow-600 text-3xl">restaurant</span>
+          <p class="text-sm mt-2 text-yellow-700 font-semibold">Update Menu</p>
+        </a>
+      </div>
+    </main>
   </div>
 
-
-    <script>
+  <script>
     const toggleBtn = document.getElementById('toggleBtn');
     const sidebar = document.getElementById('sidebar');
     toggleBtn?.addEventListener('click', () => {
